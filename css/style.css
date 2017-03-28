@@ -13,3 +13,32 @@ header {
 label {
     font-size: 1.2em;
 }
+
+.hottest {
+    background-color: red;
+}
+
+.hot {
+    background-color: orange;
+}
+
+.warm {
+    background-color: yellow;
+}
+
+.average {
+    background-color: white;
+    color: gray;
+}
+
+.cool {
+    background-color: deepskyblue;
+}
+
+.cold {
+    background-color: cornflowerblue;
+}
+
+.coldest {
+    background-color: blue;
+}
