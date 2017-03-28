@@ -1,0 +1,15 @@
+body {
+    background-color: black;
+    font-family: "Verdana", sans-serif;
+    color: white;
+    margin: auto;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 3%;
+}
+
+label {
+    font-size: 1.2em;
+}
