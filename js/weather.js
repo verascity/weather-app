@@ -2,9 +2,8 @@ $( document ).ready(function() {
     $("#lbox").on("click", function() {
         if ("geolocation" in navigator){
              navigator.geolocation.getCurrentPosition(function(position){ 
-                //$("#result").html("Found your location <br />Lat : "+position.coords.latitude+" </br>Lang :"+ position.coords.longitude);
                  $.ajax({
-                     url: "https://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&APPID=0cd024506296321d372539d62a64351c",
+                     url: "http://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&appid=0cd024506296321d372539d62a64351c",
                      success: function(response){
                          console.log(response);
                      }
