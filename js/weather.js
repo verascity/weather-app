@@ -6,6 +6,8 @@ $( document ).ready(function() {
                      url: "http://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&appid=0cd024506296321d372539d62a64351c",
                      success: function(response){
                          console.log(response);
+                         $("#lbox").remove();
+                         $("main").html("<h2>"+response.name+"</h2><hr>");
                      }
                  });             
              
@@ -21,3 +23,11 @@ $( document ).ready(function() {
         
     });
 });
+            
+var kelToFar = function(val) {
+    return (val - 273.15)*1.8000 + 32.00;
+};
+
+var kelToCel = function(val) {
+    return (val - 273.15)
+};
