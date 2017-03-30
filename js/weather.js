@@ -7,7 +7,7 @@ $( document ).ready(function() {
                      success: function(response){
                          console.log(response);
                          $("#lbox").remove();
-                         $("main").html("<h2>"+response.name+"</h2><hr><p><a href='#f'>F&deg;</a>|<a href='#c'>C&deg;</a></p>");
+                         $("main").html("<h2>"+response.name+"</h2><hr><p>"+Math.round(kelToFar(response.main.temp))+"<a href='#f'>F&deg;</a>|"+Math.round(kelToCel(response.main.temp))+"<a href='#c'>C&deg;</a></p>");
                      }
                  });             
              
