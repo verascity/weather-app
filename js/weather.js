@@ -6,12 +6,12 @@ $( document ).ready(function() {
                      url: "http://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&appid=0cd024506296321d372539d62a64351c",
                      success: function(response){
                          $("#lbox").remove();
-                         $("main").html("<h2>"+response.name+"</h2><hr><h2 id='temp'>"+Math.round(kelToFar(response.main.temp))+"&deg;</h2><br><p><a href='#f' id='f'>F&deg;</a>|<a href='#c' id='c'>C&deg;</a></p>");
+                         $("main").html("<h2>The temperature in "+response.name+" is:</h2><hr><h2 id='temp'>"+Math.round(kelToFar(response.main.temp))+"&deg; F</h2><p><a href='#f' id='f'>F&deg;</a>|<a href='#c' id='c'>C&deg;</a></p>");
                          $("#c").on("click", function() {
-                             $('#temp').html(Math.round(kelToCel(response.main.temp))+"&deg;");
+                             $('#temp').html(Math.round(kelToCel(response.main.temp))+"&deg; C");
                          });
                         $("#f").on("click", function() {
-                           $('#temp').html(Math.round(kelToFar(response.main.temp))+"&deg;"); 
+                           $('#temp').html(Math.round(kelToFar(response.main.temp))+"&deg; F"); 
                         });            
                                     
                          if (response.main.temp >= 305.372) {
