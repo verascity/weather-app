@@ -14,12 +14,15 @@ label {
     font-size: 1.2em;
 }
 
+hr {
+    width: 35%;
+}
+
 a {
     color: blue;
     font-weight: bold;
     text-decoration: none;
     margin: 1%;
-    padding: 1%;
 }
 
 a:visited {
