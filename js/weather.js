@@ -1,54 +1,35 @@
-$( document ).ready(function() {
-    $("#lbox").on("click", function() {
-        if ("geolocation" in navigator){
-             navigator.geolocation.getCurrentPosition(function(position){ 
-                 $.ajax({
-                     url: "http://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&appid=0cd024506296321d372539d62a64351c",
-                     success: function(response){
-                         $("#lbox").remove();
-                         $("main").html("<h2>The temperature in "+response.name+" is:</h2><hr><h2 id='temp'>"+Math.round(kelToFar(response.main.temp))+"&deg; F</h2><p><a href='#f' id='f'>F&deg;</a>|<a href='#c' id='c'>C&deg;</a></p>");
-                         $("#c").on("click", function() {
-                             $('#temp').html(Math.round(kelToCel(response.main.temp))+"&deg; C");
-                         });
-                        $("#f").on("click", function() {
-                           $('#temp').html(Math.round(kelToFar(response.main.temp))+"&deg; F"); 
-                        });            
+$(document).ready(function () {
+    $("#lbox").on("click", function () {  
+        $.ajax({
+            url: "http://api.wunderground.com/api/27aadada19471fa5/conditions/q/autoip.json",
+            success: function (response) {
+                console.log(response);
+                $("#lbox").remove();
+                $("main").html("<h2>The temperature in " + response.current_observation.display_location.city + " is:</h2><hr><h2 id='temp'>" + response.current_observation.temp_f + "&deg; F</h2><p><a href='#f' id='f'>F&deg;</a>|<a href='#c' id='c'>C&deg;</a></p>");
+                $("#c").on("click", function () {
+                    $('#temp').html(response.current_observation.temp_c + "&deg; C");
+                });
+                $("#f").on("click", function () {
+                    $('#temp').html(response.current_observation.temp_f + "&deg; F");
+                });    
                                     
-                         if (response.main.temp >= 305.372) {
-                             $("body").css("background-color", "red");
-                         } else if (response.main.temp >= 299.817) {
-                             $("body").css("background-color", "orange");
-                         } else if (response.main.temp >= 294.261) {
-                             $("body").css("background-color", "yellow");
-                         } else if (277.595 <= response.main.temp < 294.261) {
-                             $("body").css("background-color", "green");
-                         } else if (response.main.temp <= 277.594) {
-                             $("body").css("background-color", "deepskyblue");
-                         } else if (response.main.temp <= 273.15) {
-                             $("body").css("background-color", "cornflowerblue");
-                         } else if (response.main.temp <= 266.483) {
-                             $("body").css("background-color", "blue");
-                         };
-                     }
-                 });             
-             
-             });
-    }/*else{
-        $("main").html("<p>Please enter your city and <a href='https://en.wikipedia.org/wiki/ISO_3166-1' target='_blank'>country code</a>: </p> <input type='text' placeholder='New York, US'><input type='submit' value='submit' id='submit'>");
-        $("#submit").on("click", function(){
-            $(this).addClass(".coldest");
+                if (response.current_observation.temp_f >= 90) {
+                    $("body").css("background-color", "red");
+                } else if (response.current_observation.temp_f >= 80) {
+                    $("body").css("background-color", "orange");
+                } else if (response.current_observation.temp_f >= 70) {
+                    $("body").css("background-color", "yellow");
+                } else if (41 <= response.main.temp < 70) {
+                    $("body").css("background-color", "green");
+                } else if (response.current_observation.temp_f <= 40) {
+                    $("body").css("background-color", "deepskyblue");
+                } else if (response.current_observation.temp_f <= 32) {
+                    $("body").css("background-color", "cornflowerblue");
+                } else if (response.current_observation.temp_f <= 20) {
+                    $("body").css("background-color", "blue");
+                }
+            }
         });
-    }      */  
-        
-        
         
     });
 });
-            
-var kelToFar = function(val) {
-    return (val - 273.15)*1.8000 + 32.00;
-};
-
-var kelToCel = function(val) {
-    return (val - 273.15)
-};

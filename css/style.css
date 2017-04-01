@@ -30,3 +30,7 @@ a {
 a:visited {
     color: blue;
 }
+
+footer {
+    font-size: 0.75em;
+}
