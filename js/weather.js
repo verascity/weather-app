@@ -13,20 +13,20 @@ $(document).ready(function () {
                     $('#temp').html(response.current_observation.temp_f + "&deg; F");
                 });    
                                     
-                if (response.current_observation.temp_f >= 90) {
-                    $("body").css("background-color", "red");
-                } else if (response.current_observation.temp_f >= 80) {
-                    $("body").css("background-color", "orange");
-                } else if (response.current_observation.temp_f >= 70) {
-                    $("body").css("background-color", "yellow");
-                } else if (41 <= response.main.temp < 70) {
-                    $("body").css("background-color", "green");
-                } else if (response.current_observation.temp_f <= 40) {
-                    $("body").css("background-color", "deepskyblue");
-                } else if (response.current_observation.temp_f <= 32) {
-                    $("body").css("background-color", "cornflowerblue");
-                } else if (response.current_observation.temp_f <= 20) {
-                    $("body").css("background-color", "blue");
+                if (Math.round(response.current_observation.temp_f) > 90) {
+                  $("body").css("background-color", "burgundy");
+                } else if (Math.round(response.current_observation.temp_f) > 80) {
+                  $("body").css("background-color", "orange");
+                } else if (Math.round(response.current_observation.temp_f) > 70) {
+                  $("body").css("background-color", "yellow");
+               }  else if (Math.round(response.current_observation.temp_f) >= 45) {
+                  $("body").css("background-color", "green");
+               } else if (44 >= Math.round(response.current_observation.temp_f)) {
+                  $("body").css("background-color", "deepskyblue");
+               }  else if (Math.round(response.current_observation.temp_f) < 32) {
+                  $("body").css("background-color", "cornflowerblue");
+               } else if (Math.round(response.current_observation.temp_f) < 20) {
+                  $("body").css("background-color", "blue");
                 }
             }
         });
